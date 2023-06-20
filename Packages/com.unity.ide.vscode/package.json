@@ -1,6 +1,6 @@
 {
-  "name": "com.unity.ide.vscode",
-  "displayName": "Visual Studio Code Editor",
+  "name": "com.unity.ide.vscode-temporary-workaround",
+  "displayName": "Visual Studio Code Editor (Temporary Workaround)",
   "description": "Code editor integration for supporting Visual Studio Code as code editor for unity. Adds support for generating csproj files for intellisense purposes, auto discovery of installations, etc. This package is no longer supported and won't receive any further updates.",
   "version": "1.2.3",
   "unity": "2019.2",

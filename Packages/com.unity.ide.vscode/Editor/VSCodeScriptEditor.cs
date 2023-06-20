@@ -191,7 +191,22 @@ namespace VSCodeEditor
             }
             else
             {
-                arguments = $@"""{m_ProjectGeneration.ProjectDirectory}""";
+                var projectDirectoryName = Path.GetFileName(m_ProjectGeneration.ProjectDirectory);
+                var workspaceFileName = $"{projectDirectoryName}.code-workspace";
+                var possibleWorkspaceFilePath1 = Path.Combine(m_ProjectGeneration.ProjectDirectory, workspaceFileName);
+                var possibleWorkspaceFilePath2 = Path.Combine(m_ProjectGeneration.ProjectDirectory, "..", workspaceFileName);
+                if (File.Exists(possibleWorkspaceFilePath1))
+                {
+                    arguments = $@"""{possibleWorkspaceFilePath1}""";
+                }
+                else if (File.Exists(possibleWorkspaceFilePath2))
+                {
+                    arguments = $@"""{possibleWorkspaceFilePath2}""";
+                }
+                else
+                {
+                    arguments = $@"""{m_ProjectGeneration.ProjectDirectory}""";
+                }
                 if (m_ProjectGeneration.ProjectDirectory != path && path.Length != 0)
                 {
                     arguments += $@" -g ""{path}"":{line}:{column}";
